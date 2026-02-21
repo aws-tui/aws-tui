@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aws-tui — A Terminal User Interface for AWS</title>
+  <meta name="description" content="Browse and manage your AWS resources from the terminal. Keyboard-driven, vim-style navigation, zero config.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-icon">▸</span> aws-tui
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#services">Services</a>
+        <a href="#install">Install</a>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">macOS & Linux</div>
+      <h1 class="hero-title">
+        Your AWS console,<br>
+        <span class="hero-highlight">in the terminal.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Browse EC2 instances, S3 buckets, VPCs, Route 53 zones, and more — all from a fast, keyboard-driven terminal interface with vim-style navigation.
+      </p>
+      <div class="hero-actions">
+        <div class="hero-install">
+          <code>brew install aws-tui/tap/aws-tui</code>
+          <button class="copy-btn" onclick="copyInstall(this)" aria-label="Copy install command">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Screenshot -->
+  <section class="screenshot-section">
+    <div class="screenshot-wrapper">
+      <div class="terminal-chrome">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="terminal-title">aws-tui</span>
+      </div>
+      <img src="aws-tui.png" alt="aws-tui screenshot showing EC2 instances, S3 buckets, and VPC resources in a terminal interface" class="screenshot-img" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Why aws-tui?</h2>
+      <p class="section-subtitle">Everything you need to explore AWS, nothing you don't.</p>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">⌨️</div>
+          <h3>Vim-Style Navigation</h3>
+          <p>Navigate with <kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd>, search with <kbd>/</kbd>, copy resource IDs with <kbd>y</kbd>. Feels like home.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Blazing Fast</h3>
+          <p>Built in Go with the Bubble Tea framework. Single binary, instant startup, zero runtime dependencies.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3>Profile & Region Switching</h3>
+          <p>Switch AWS profiles with <kbd>P</kbd> and regions with <kbd>R</kbd>. Works with your existing AWS credentials and SSO.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Search & Filter</h3>
+          <p>Instantly search across resources with fuzzy matching. Find the instance you need in seconds, not minutes.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏷️</div>
+          <h3>Tags & Details</h3>
+          <p>View resource tags with <kbd>t</kbd>, see full details inline. No more clicking through the AWS console.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Instance Actions</h3>
+          <p>Start, stop, reboot, or terminate EC2 instances directly from the TUI. Confirmation prompts keep you safe.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">Supported AWS Services</h2>
+      <p class="section-subtitle">Browse resources across these services with more being added regularly.</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🖥️</div>
+          <h3>EC2</h3>
+          <p>Instances, Security Groups, Key Pairs</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🪣</div>
+          <h3>S3</h3>
+          <p>Buckets</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3>VPC</h3>
+          <p>VPCs, Subnets, Route Tables, Internet Gateways, Network ACLs</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📡</div>
+          <h3>Route 53</h3>
+          <p>Hosted Zones, Record Sets, Health Checks</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Keyboard Shortcuts -->
+  <section class="shortcuts">
+    <div class="container">
+      <h2 class="section-title">Keyboard-First Design</h2>
+      <p class="section-subtitle">Every action is a keystroke away.</p>
+      <div class="shortcuts-grid">
+        <div class="shortcut-group">
+          <h4>Navigation</h4>
+          <div class="shortcut-row"><kbd>j</kbd> / <kbd>k</kbd><span>Move up / down</span></div>
+          <div class="shortcut-row"><kbd>h</kbd> / <kbd>l</kbd><span>Move left / right</span></div>
+          <div class="shortcut-row"><kbd>Enter</kbd><span>Select resource</span></div>
+          <div class="shortcut-row"><kbd>Esc</kbd><span>Go back</span></div>
+          <div class="shortcut-row"><kbd>g</kbd> / <kbd>G</kbd><span>Top / Bottom</span></div>
+        </div>
+        <div class="shortcut-group">
+          <h4>Actions</h4>
+          <div class="shortcut-row"><kbd>/</kbd><span>Search</span></div>
+          <div class="shortcut-row"><kbd>y</kbd><span>Copy resource ID</span></div>
+          <div class="shortcut-row"><kbd>t</kbd><span>View tags</span></div>
+          <div class="shortcut-row"><kbd>P</kbd><span>Switch profile</span></div>
+          <div class="shortcut-row"><kbd>R</kbd><span>Switch region</span></div>
+          <div class="shortcut-row"><kbd>Ctrl+R</kbd><span>Refresh</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="install">
+    <div class="container">
+      <h2 class="section-title">Get Started in Seconds</h2>
+      <p class="section-subtitle">Install with Homebrew and start browsing your AWS resources.</p>
+      <div class="install-steps">
+        <div class="install-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Install</h4>
+            <div class="code-block">
+              <code>brew install aws-tui/tap/aws-tui</code>
+            </div>
+          </div>
+        </div>
+        <div class="install-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Run</h4>
+            <div class="code-block">
+              <code>aws-tui</code>
+            </div>
+          </div>
+        </div>
+        <div class="install-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Explore</h4>
+            <p class="step-desc">Use your existing AWS credentials. Navigate with vim keys. Press <kbd>?</kbd> for help.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="nav-logo-icon">▸</span> aws-tui
+        </div>
+
+        <div class="footer-copy">
+          Built with Go + Bubble Tea.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function copyInstall(btn) {
+      navigator.clipboard.writeText('brew install aws-tui/tap/aws-tui').then(function() {
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+        setTimeout(function() {
+          btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+        }, 2000);
+      });
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Animate elements on scroll
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-card, .service-card, .install-step, .shortcut-group').forEach(function(el) {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
